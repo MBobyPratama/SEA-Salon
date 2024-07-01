@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2 class="mb-3 underline-title">Customer Dashboard</h2>
+
+<h3 class="mb-3 underline-title">Your Reservations</h3>
+{% if reservations %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Branch</th>
+                <th>Date and Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.service.name }}</td>
+                <td>{{ reservation.branch.name }}</td>
+                <td>{{ reservation.date_time }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>You don't have any reservations yet.</p>
+{% endif %}
+
+<h3 class="mb-3 underline-title">Make a New Reservation</h3>
+<a href="{% url 'make_reservation' %}" class="btn btn-primary">Make Reservation</a>
+{% endblock %}

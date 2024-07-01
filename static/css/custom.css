@@ -1,0 +1,115 @@
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: 'Playfair Display', serif;
+}
+
+.navbar {
+  background-color: #000 !important;
+  border-bottom: 1px solid #8e44ad;
+}
+
+.navbar-brand, .nav-link {
+  color: #8e44ad !important;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(142, 68, 173, 0.3);
+  padding: 2rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  background: linear-gradient(45deg, #8e44ad, #9b59b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #8e44ad, #9b59b6);
+  border-color: #8e44ad;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #9b59b6, #8e44ad);
+  border-color: #9b59b6;
+  color: #fff;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #8e44ad;
+  box-shadow: 0 0 5px rgba(142, 68, 173, 0.3);
+}
+
+.jumbotron {
+  background: linear-gradient(45deg, rgba(142, 68, 173, 0.2), rgba(155, 89, 182, 0.2));
+  border: 1px solid #8e44ad;
+  color: #e0e0e0;
+}
+
+footer {
+  background-color: #000 !important;
+  border-top: 1px solid #8e44ad;
+  color: #8e44ad !important;
+}
+
+.list-group-item {
+  background-color: #fff;
+  border-color: #8e44ad;
+  color: #333;
+}
+
+.form-control {
+  background-color: #fff;
+  border-color: #8e44ad;
+  color: #333;
+}
+
+.form-control:focus {
+  background-color: #fff;
+  border-color: #9b59b6;
+  color: #333;
+  box-shadow: 0 0 0 0.2rem rgba(142, 68, 173, 0.25);
+}
+
+.table {
+  color: #333;
+}
+
+.table thead th {
+  border-bottom: 2px solid #8e44ad;
+}
+
+.table td, .table th {
+  border-top: 1px solid #8e44ad;
+}
+
+.alert-info {
+  background-color: rgba(142, 68, 173, 0.2);
+  border-color: #8e44ad;
+  color: #e0e0e0;
+}
+
+.alert-info a {
+  color: #9b59b6;
+}
+
+.alert-info a:hover {
+  color: #8e44ad;
+}
+
+.text-purple {
+  color: #8e44ad;
+}
+
+.underline-title {
+  border-bottom: 2px solid #8e44ad;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}

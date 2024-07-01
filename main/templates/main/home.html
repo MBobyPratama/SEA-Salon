@@ -1,0 +1,84 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}SEA Salon - Beauty and Elegance Redefined{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1 class="text-center mb-4 underline-title">Welcome to SEA Salon</h1>
+  
+  <div class="jumbotron">
+    <h2 class="display-4">Beauty and Elegance Redefined</h2>
+    <p class="lead text-purple">Experience the ultimate in beauty and relaxation at SEA Salon.</p>
+  </div>
+
+  <h3 class="mb-3 underline-title">Our Services</h3>
+  <ul class="list-group mb-4">
+    <li class="list-group-item">Haircuts and Styling</li>
+    <li class="list-group-item">Manicure and Pedicure</li>
+    <li class="list-group-item">Facial Treatments</li>
+  </ul>
+
+  <h3 class="mb-3 underline-title">Make a Reservation</h3>
+  {% if user.is_authenticated %}
+    <form method="post" action="{% url 'home' %}">
+      {% csrf_token %}
+      {{ reservation_form|crispy }}
+      <button type="submit" name="reservation_submit" class="btn btn-primary">Submit Reservation</button>
+    </form>
+  {% else %}
+    <div class="alert alert-info" role="alert">
+      <p class="text-purple">Please <a href="{% url 'login' %}">login</a> to make a reservation.</p>
+    </div>
+  {% endif %}
+
+  <h3 class="mb-3 mt-5 underline-title">Customer Reviews</h3>
+  {% if user.is_authenticated %}
+    <form method="post" action="{% url 'home' %}">
+      {% csrf_token %}
+      {{ review_form|crispy }}
+      <button type="submit" name="review_submit" class="btn btn-primary">Submit Review</button>
+    </form>
+  {% else %}
+    <div class="alert alert-info" role="alert">
+      <p class="text-purple">Please <a href="{% url 'login' %}">login</a> to make a reservation.</p>
+    </div>
+  {% endif %}
+
+  <h4 class="mt-4 underline-title">Recent Reviews</h4>
+  {% if reviews %}
+    {% for review in reviews %}
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ review.customer_name }}</h5>
+          <p class="card-text">Rating: {{ review.star_rating }} / 5</p>
+          <p class="card-text">{{ review.comment }}</p>
+          <small class="text-muted">{{ review.created_at }}</small>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No reviews yet.</p>
+  {% endif %}
+
+  <h3 class="mb-3 underline-title">Contact Us</h3>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Thomas</h5>
+          <p class="card-text">Phone: 08123456789</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Sekar</h5>
+          <p class="card-text">Phone: 08164829372</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

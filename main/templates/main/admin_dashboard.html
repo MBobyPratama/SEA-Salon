@@ -1,0 +1,47 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h2 class="mb-3 underline-title">Admin Dashboard</h2>
+
+<h3>Add New Branch</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ branch_form|crispy }}
+    <small class="form-text text-muted">Please enter times in 24-hour format (e.g., 09:00 for 9 AM, 21:00 for 9 PM)</small>
+    <button type="submit" name="add_branch" class="btn btn-primary">Add Branch</button>
+</form>
+
+<h3 class="mb-3 underline-title">Add New Service</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ service_form|crispy }}
+    <button type="submit" name="add_service" class="btn btn-primary">Add Service</button>
+</form>
+
+<h3 class="mb-3 underline-title">Branches</h3>
+<ul>
+    {% for branch in branches %}
+    <li>
+        {{ branch.name }} - {{ branch.location }} ({{ branch.opening_time }} - {{ branch.closing_time }})
+        <form method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" name="delete_branch" value="{{ branch.id }}" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+
+<h3 class="mb-3 underline-title">Services</h3>
+<ul>
+    {% for service in services %}
+    <li>
+        {{ service.name }} ({{ service.duration }} minutes) at {{ service.branch.name }}
+        <form method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" name="delete_service" value="{{ service.id }}" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
